@@ -4,7 +4,7 @@ export default function About() {
     return (
         <div className='about-page-container'>
             <img
-                src='../about-hero.png'
+                src='../../about-hero.png'
                 alt='about-hero'
                 className='about-hero-image'
             />
