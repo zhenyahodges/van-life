@@ -1,37 +1,46 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
 import { getVans } from '../../api';
+
+export function loader() {
+    return getVans();
+}
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [vans, setVans] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [vans, setVans] = useState([]);
+    // const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(null);
+
+    // data api/ loader
+    // const data = useLoaderData();
+    const vans = useLoaderData();
+    // console.log(data);
 
     const typeFilter = searchParams.get('type');
     // console.log(typeFilter);
 
-    useEffect(() => {
-        async function loadVans() {
-            setLoading(true);
-            try {
-                const data = await getVans();
-                setVans(data);
-            } catch (err) {
-                setErr(err);
-                // console.log(err);
-            } finally {
-                setLoading(false);
-            }
-        }
+    // useEffect(() => {
+    //     async function loadVans() {
+    //         setLoading(true);
+    //         try {
+    //             const data = await getVans();
+    //             setVans(data);
+    //         } catch (err) {
+    //             setErr(err);
+    //             // console.log(err);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     }
 
-        loadVans();
-    }, []);
+    //     loadVans();
+    // }, []);
 
     // console.log(vans);
 
-    const displayedVans = typeFilter?
-     vans.filter((v) => v.type === typeFilter)
+    const displayedVans = typeFilter
+        ? vans.filter((v) => v.type === typeFilter)
         : vans;
 
     const vanElements = displayedVans.map((van) => (
@@ -71,9 +80,9 @@ export default function Vans() {
     //     return <h1>Loading...</h1>;
     // }
 
-    if (err) {
-        return <h1>Error: {err.message}</h1>;
-    }
+    // if (err) {
+    //     return <h1>Error: {err.message}</h1>;
+    // }
 
     return (
         <div className='van-list-container'>

@@ -1,4 +1,4 @@
-import { Link,NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -25,6 +25,14 @@ export default function Header() {
                 >
                     Vans
                 </NavLink>
+
+                <Link to='login' className='login-link'>
+                    <img
+                        src='/avatar-icon.png'
+                        className='login-icon'
+                        alt='avatar'
+                    />
+                </Link>
             </nav>
         </header>
     );
