@@ -5,7 +5,8 @@ import { getVans } from '../../api';
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams();
     const [vans, setVans] = useState([]);
-    const [loading,setLoading]= useState(false);
+    const [loading, setLoading] = useState(false);
+    const [err, setErr] = useState(null);
 
     const typeFilter = searchParams.get('type');
     // console.log(typeFilter);
@@ -13,20 +14,27 @@ export default function Vans() {
     useEffect(() => {
         async function loadVans() {
             setLoading(true);
-            const data = await getVans();
-            setVans(data);
-            setLoading(false);
+            try {
+                const data = await getVans();
+                setVans(data);
+            } catch (err) {
+                setErr(err);
+                // console.log(err);
+            } finally {
+                setLoading(false);
+            }
         }
+
         loadVans();
     }, []);
 
     // console.log(vans);
 
-    const displayedVans = typeFilter
-        ? vans.filter((v) => v.type === typeFilter)
+    const displayedVans = typeFilter?
+     vans.filter((v) => v.type === typeFilter)
         : vans;
 
-    let vanElements = displayedVans.map((van) => (
+    const vanElements = displayedVans.map((van) => (
         <div key={van.id} className='van-tile'>
             <Link
                 to={van.id}
@@ -35,7 +43,7 @@ export default function Vans() {
                     type: typeFilter,
                 }}
             >
-                <img src={van.imageUrl} alt={`${van.name}`} />
+                <img src={van.imageUrl} />
                 <div className='van-info'>
                     <h3>{van.name}</h3>
                     <p>
@@ -48,8 +56,23 @@ export default function Vans() {
         </div>
     ));
 
-    if(loading){
-        return <h1>Loading...</h1>
+    // function handleFilterChange(key, value) {
+    //     setSearchParams((prevParams) => {
+    //         if (value === null) {
+    //             prevParams.delete(key);
+    //         } else {
+    //             prevParams.set(key, value);
+    //         }
+    //         return prevParams;
+    //     });
+    // }
+
+    // if (loading) {
+    //     return <h1>Loading...</h1>;
+    // }
+
+    if (err) {
+        return <h1>Error: {err.message}</h1>;
     }
 
     return (
@@ -69,6 +92,11 @@ export default function Vans() {
                         typeFilter === 'luxury' ? 'selected' : ''
                     }`}
                     onClick={() => setSearchParams({ type: 'luxury' })}
+                    // onClick={() => handleFilterChange("type", "simple")}
+                    // className={
+                    //     `van-type simple
+                    //     ${typeFilter === "simple" ? "selected" : ""}`
+                    // }
                 >
                     Luxury
                 </button>
