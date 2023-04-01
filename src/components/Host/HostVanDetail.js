@@ -23,6 +23,7 @@ export default function HostVanDetail() {
     };
 
     return (
+       
         <section>
             <Link to='..' relative='path' className='back-button'>
                 &larr; <span>Back to all vans</span>
@@ -66,7 +67,7 @@ export default function HostVanDetail() {
                         Photos
                     </NavLink>
                 </nav>
-                <Outlet />
+                <Outlet context={{van}}/>
             </div>
         </section>
     );
