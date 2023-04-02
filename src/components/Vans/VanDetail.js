@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link, useLoaderData, useLocation, useParams } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+// import { Link, useLoaderData, useLocation, useParams } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { getVans } from '../../api';
 
 export function loader({params}){

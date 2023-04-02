@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
 import { getVans } from '../../api';
 
@@ -10,7 +11,7 @@ export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams();
     // const [vans, setVans] = useState([]);
     // const [loading, setLoading] = useState(false);
-    const [err, setErr] = useState(null);
+    // const [err, setErr] = useState(null);
 
     // data api/ loader
     // const data = useLoaderData();
@@ -52,7 +53,7 @@ export default function Vans() {
                     type: typeFilter,
                 }}
             >
-                <img src={van.imageUrl} />
+                <img src={van.imageUrl} alt={van.title} />
                 <div className='van-info'>
                     <h3>{van.name}</h3>
                     <p>
