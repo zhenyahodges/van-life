@@ -5,6 +5,7 @@ import { requireAuth } from '../../utils';
 
 export async function loader(){
     await requireAuth();
+    console.log(requireAuth());    
     return getHostVans();
 }
 
