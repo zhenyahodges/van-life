@@ -28,7 +28,9 @@ import HostVanPhotos from './components/Host/HostVanPhotos';
 import HostVanInfo from './components/Host/HostVanInfo';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
-import Login from './components/Login';
+import Login, {loader as loginLoader} from './components/Login';
+import { requireAuth } from './utils';
+
 
 function App() {
     const router = createBrowserRouter(
@@ -36,7 +38,10 @@ function App() {
             <Route path='/' element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path='about' element={<About />} />
-                <Route path='login' element={<Login />} />
+                <Route path='login' 
+                element={<Login />}
+                loader={loginLoader} 
+                />
                 <Route
                     path='vans'
                     element={<Vans />}
@@ -47,60 +52,58 @@ function App() {
                     path='vans/:id'
                     element={<VanDetail />}
                     loader={vanDetailLoader}
+                     errorElement={<Error />}
                 />
 
                 <Route path='host' element={<HostLayout />}>
                     <Route
                         index
                         element={<Dashboard />}
-                        loader={async () => {
-                            return null;
-                        }}
+                         errorElement={<Error />}
+                        loader={async () => await requireAuth()}
                     />
                     <Route
                         path='income'
                         element={<Income />}
-                        loader={async () => {
-                            return null;
-                        }}
+                         errorElement={<Error />}
+                        loader={async () => await requireAuth()
+                        }
                     />
                     <Route
                         path='reviews'
                         element={<Reviews />}
-                        loader={async () => {
-                            return null;
-                        }}
+                         errorElement={<Error />}
+                        loader={async () => await requireAuth()}
                     />
                     <Route
                         path='vans'
                         element={<HostVans />}
+                         errorElement={<Error />}
                         loader={hostVansLoader}
                     />
                     <Route
                         path='vans/:id'
                         element={<HostVanDetail />}
+                         errorElement={<Error />}
                         loader={hostVanDetailLoader}
                     >
                         <Route
                             index
                             element={<HostVanInfo />}
-                            loader={async () => {
-                                return null;
-                            }}
+                             errorElement={<Error />}
+                            loader={async () => await requireAuth()}
                         />
                         <Route
                             path='pricing'
                             element={<HostVanPricing />}
-                            loader={async () => {
-                                return null;
-                            }}
+                             errorElement={<Error />}
+                            loader={async () => await requireAuth()}
                         />
                         <Route
                             path='photos'
                             element={<HostVanPhotos />}
-                            loader={async () => {
-                                return null;
-                            }}
+                             errorElement={<Error />}
+                            loader={async () => await requireAuth()}
                         />
                     </Route>
                 </Route>
