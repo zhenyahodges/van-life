@@ -37,7 +37,7 @@ export async function getVans(id) {
     const url = id ? `/api/vans/${id}` : '/api/vans';
     const res = await fetch(url);
     if (!res.ok) {
-        throw new Error(`${res.message},${res.status},${res.statusText}`);
+        throw new Error(`${res.message},${res.status},${res.statusText},${res.headers}`);
     }
     const data = await res.json();
     return data.vans;
@@ -47,7 +47,7 @@ export async function getHostVans(id) {
     const url = id ? `/api/host/vans/${id}` : '/api/host/vans';
     const res = await fetch(url);
     if (!res.ok) {
-        throw new Error(`${res.message},${res.status},${res.statusText}`);
+        throw new Error(`${res.message},${res.status},${res.statusText},${res.headers}`);
     }
     const data = await res.json();
     return data.vans;
@@ -61,7 +61,7 @@ export async function loginUser(creds) {
     const data = await res.json();
 
     if (!res.ok) {
-        throw new Error(`${res.message},${res.status},${res.statusText}`);
+        throw new Error(`${res.message},${res.status},${res.statusText},${res.headers}`);
     }
 
     return data;
