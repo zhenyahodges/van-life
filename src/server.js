@@ -23,7 +23,7 @@ createServer({
             name: 'Beach Bum',
             price: 80,
             description:
-                "Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won't find in an ordinary camper.",
+                'Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won\'t find in an ordinary camper.',
             imageUrl:
                 'https://assets.scrimba.com/advanced-react/react-router/beach-bum.png',
             type: 'rugged',
@@ -34,7 +34,7 @@ createServer({
             name: 'Reliable Red',
             price: 100,
             description:
-                "Reliable Red is a van that was made for travelling. The inside is comfortable and cozy, with plenty of space to stretch out in. There's a small kitchen, so you can cook if you need to. You'll feel like home as soon as you step out of it.",
+                'Reliable Red is a van that was made for travelling. The inside is comfortable and cozy, with plenty of space to stretch out in. There\'s a small kitchen, so you can cook if you need to. You\'ll feel like home as soon as you step out of it.',
             imageUrl:
                 'https://assets.scrimba.com/advanced-react/react-router/reliable-red.png',
             type: 'luxury',
@@ -67,7 +67,7 @@ createServer({
             name: 'Green Wonder',
             price: 70,
             description:
-                "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.",
+                'With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that\'s perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.',
             imageUrl:
                 'https://assets.scrimba.com/advanced-react/react-router/green-wonder.png',
             type: 'rugged',
@@ -125,7 +125,7 @@ createServer({
             foundUser.password = undefined;
             return {
                 user: foundUser,
-                token: "Enjoy your pizza, here's your tokens.",
+                token: 'Enjoy your pizza, here\'s your tokens.',
             };
         });
     },
