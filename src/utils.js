@@ -13,5 +13,5 @@ export async function requireAuth(request) {
         // return redirect('/login');
         // return <Navigate to="/login?message=You must log in first." />;
     }
-    // return null;
+    return null;
 }

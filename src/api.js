@@ -58,11 +58,11 @@ export async function loginUser(creds) {
         method: 'post',
         body: JSON.stringify(creds),
     });
-    const data = await res.json();
-
     if (!res.ok) {
         throw new Error(`${res.message},${res.status},${res.statusText},${res.headers}`);
     }
+    const data = await res.json();
+
 
     return data;
 }

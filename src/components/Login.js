@@ -16,7 +16,7 @@ export function loader({ request }) {
 export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get('email');
-    const password = formData.get('password');
+    const password = formData.get('password');    
     const pathname =
         new URL(request.url).searchParams.get('redirectTo') || '/host';
 
@@ -71,7 +71,10 @@ export default function Login() {
             {message && <h3 className='red'>{message}</h3>}
             {errorMessage && <h3 className='red'>{errorMessage}</h3>}
             {/* {err && <h3 className='red'>{err.message}</h3>} */}
-            <Form method='post' className='login-form' replace>
+            <Form 
+            action='/login'
+            method='post' 
+            className='login-form' replace>
                 {/* <form onSubmit={handleSubmit} className='login-form'> */}
                 <input
                     name='email'
