@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { loginUser } from '../api';
 
-export function loader({ request }) {
+export function loader({ request }) {    
     return new URL(request.url).searchParams.get('message');
 }
 
@@ -24,6 +24,8 @@ export async function action({ request }) {
         const data = await loginUser({ email, password });
         localStorage.setItem('loggedin', true);
         return redirect(pathname);
+        // console.log(data);
+        // return null;
     } catch (err) {
         return err.message;
     }

@@ -1,8 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
+  
     function fakeLogOut() {
-        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('loggedin');
     }
 
     return (

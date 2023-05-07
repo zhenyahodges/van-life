@@ -33,6 +33,7 @@ import Login, {
     action as loginAction,
 } from './components/Login';
 import { requireAuth } from './utils';
+import './server';
 // localStorage.removeItem('loggedin');
 
 function App() {
@@ -65,19 +66,25 @@ function App() {
                         index
                         element={<Dashboard />}
                         // errorElement={<Error />}
-                        loader={async ({request}) => await requireAuth(request)}
+                        loader={async ({ request }) =>
+                            await requireAuth(request)
+                        }
                     />
                     <Route
                         path='income'
                         element={<Income />}
                         // errorElement={<Error />}
-                        loader={async ({request}) => await requireAuth(request)}
+                        loader={async ({ request }) =>
+                            await requireAuth(request)
+                        }
                     />
                     <Route
                         path='reviews'
                         element={<Reviews />}
                         // errorElement={<Error />}
-                        loader={async ({request}) => await requireAuth(request)}
+                        loader={async ({ request }) =>
+                            await requireAuth(request)
+                        }
                     />
                     <Route
                         path='vans'
@@ -95,24 +102,29 @@ function App() {
                             index
                             element={<HostVanInfo />}
                             // errorElement={<Error />}
-                            loader={async ({request}) => await requireAuth(request)}
+                            loader={async ({ request }) =>
+                                await requireAuth(request)
+                            }
                         />
                         <Route
                             path='pricing'
                             element={<HostVanPricing />}
                             // errorElement={<Error />}
-                            loader={async ({request}) => await requireAuth(request)}
+                            loader={async ({ request }) =>
+                                await requireAuth(request)
+                            }
                         />
                         <Route
                             path='photos'
                             element={<HostVanPhotos />}
                             // errorElement={<Error />}
-                            loader={async ({request}) => await requireAuth(request)}
+                            loader={async ({ request }) =>
+                                await requireAuth(request)
+                            }
                         />
                     </Route>
                 </Route>
-                <Route path='*' 
-                element={<NotFound />} />
+                <Route path='*' element={<NotFound />} />
             </Route>
         )
     );

@@ -8,7 +8,7 @@ export async function requireAuth(request) {
 
     if (!isLoggedIn) {
         // throw redirect('/login');
-        throw redirect(`/login?message=You must log in first.&redirectTo=${pathname}`);
+       return redirect(`/login?message=You must log in first.&redirectTo=${pathname}`);
 
         // return redirect('/login');
         // return <Navigate to="/login?message=You must log in first." />;
